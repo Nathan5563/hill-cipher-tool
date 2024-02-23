@@ -111,7 +111,7 @@ def decrypt(cipherText, key):
         keyTextProduct = np.matmul(inverseKeyMatrix, cipherTextMatrix)
 
         # Add 1 to the index because it kept returning 26 % 26 = 0, a hacky solution but it works
-        plainTextMatrix = ((keyTextProduct % 26)+0.5) % 26
+        plainTextMatrix = ((keyTextProduct % 26)+1) % 26
 
         # Convert the resulting 3x1 matrix back into a 1x3 array
         plainTextArray = np.squeeze(plainTextMatrix)
@@ -123,8 +123,8 @@ def decrypt(cipherText, key):
     return plainText
 
 
-encrypt('ILOVEYOU', 'GYBNQKURP')
+encrypt('ACT', 'GYBNQKURP')
 # Output: POH
 
-decrypt('OELMFQRYH', 'GYBNQKURP')
+decrypt('POH', 'GYBNQKURP')
 # Output: ACT
