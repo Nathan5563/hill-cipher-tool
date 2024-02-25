@@ -1,15 +1,21 @@
 import numpy as np
 
+alphabet_upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+alphabet_lower = 'abcdefghijklmnopqrstuvwxyz'
 
+
+# noinspection PyUnboundLocalVariable
 def letter_to_num(letter):
-    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    num = alphabet.index(letter)
+    if letter in alphabet_upper:
+        num = alphabet_upper.index(letter)
+    elif letter in alphabet_lower:
+        num = alphabet_lower.index(letter)
+
     return num
 
 
 def num_to_letter(num):
-    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    letter = alphabet[num]
+    letter = alphabet_upper[num]
     return letter
 
 
@@ -104,5 +110,5 @@ def decrypt(ciphertext, key):
     return plaintext
 
 
-print(encrypt("HELLOWORLD", "GYBNQKURP"))
+print(encrypt("HelloWorld", "GYBNQKURP"))
 print(decrypt("TFJIPIJSGTNC", "GYBNQKURP"))
