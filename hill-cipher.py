@@ -93,7 +93,7 @@ def decrypt(ciphertext, key):
 
     if not isinstance(formatted_key, int):
         # Fnd the determinant of the key matrix and its inverse modulo 26
-        mod_det = int(np.linalg.det(formatted_key) % 26)
+        mod_det = int(np.linalg.det(formatted_key))
         inv_mod_det = pow(mod_det, -1, 26)
 
         # Find the adjoint of the key matrix and take modulo 26
@@ -123,5 +123,10 @@ def decrypt(ciphertext, key):
         print("Invalid key: Must be a square matrix")
 
 
-print(encrypt("HelloWorld", "DFCD"))
-print(decrypt("PAKDWQXBWF", "DFCD"))
+# Working key examples:
+# n=2: HILL
+# n=3: GYBNQKURP
+# n=4: IGJFGJFKFIEJKGLE
+
+print(encrypt("HelloWorld", "IGJFGJFKFIEJKGLE"))
+print(decrypt("AJCZNCNAOAOJ", "IGJFGJFKFIEJKGLE"))
